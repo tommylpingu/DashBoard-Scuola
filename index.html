@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestore Orario e Voti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Dashboard Scolastica</h1>
+    <p>Gestisci il tuo orario settimanale</p>
+  </header>
+
+  <main class="container">
+    
+    <!-- Sezione Orario Settimanale -->
+    <section class="orario-section">
+      <h2>Orario Settimanale</h2>
+      <table id="tabella-orario">
+        <thead>
+          <tr>
+            <th>Ora</th>
+            <th>Lunedì</th>
+            <th>Martedì</th>
+            <th>Mercoledì</th>
+            <th>Giovedì</th>
+            <th>Venerdì</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!-- provissorio poi metto la possibilità di decidere le ore per giornata -->
+          <tr>
+            <td>1ª Ora</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+          </tr>
+          <tr>
+            <td>2ª Ora</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+          </tr>
+          <tr>
+            <td>3ª Ora</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+          </tr>
+          <tr>
+            <td>4ª Ora</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+          </tr>
+          <tr>
+            <td>5ª Ora</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+          </tr>
+          <tr>
+            <td>6ª Ora</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+            <td class="materia">--</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+     <section class="form-section">
+      <h2>Aggiungi Voto</h2>
+      <form id="form-voto">
+        <label for="materia-select">Materia:</label>
+        <select id="materia-select" required>
+          <option value="">Seleziona materia</option>
+          <option value="Informatica">Informatica</option>
+          <option value="Matematica">Matematica</option>
+          <option value="Italiano">Italiano</option>
+        </select>
+
+        <label for="voto-input">Voto:</label>
+        <input type="number" id="voto-input" min="2" max="10" step="0.5" placeholder="Es. 8" required>
+
+        <button type="submit">Salva Voto</button>
+      </form>
+    </section>
+
+    <section class="media-section">
+      <h2>Media Generale</h2>
+      <div class="media-box">
+        <span id="media-valore">--</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
