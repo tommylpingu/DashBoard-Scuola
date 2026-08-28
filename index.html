@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestore Orario e Voti</title>
+  <title>Dashboard Scolastica</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>Dashboard Scolastica</h1>
-    <p>Gestisci il tuo orario settimanale</p>
+  <header class="top-bar">
+    <h1 id="titolo-pagina">Orario Settimanale</h1>
+    
+    <!-- Icona di navigazione animata -->
+    <button id="btn-switch" class="nav-icon" title="Passa ai Voti">
+      <span class="icon-text">Valutazioni</span> 
+    </button>
   </header>
 
   <main class="container">
     
-    <!-- Sezione Orario Settimanale -->
-    <section class="orario-section">
-      <h2>Orario Settimanale</h2>
+    <!-- SEZIONE 1: ORARIO -->
+    <section id="sezione-orario" class="page-section active">
       <table id="tabella-orario">
         <thead>
           <tr>
@@ -30,7 +33,6 @@
           </tr>
         </thead>
         <tbody>
-        <!-- provissorio poi metto la possibilità di decidere le ore per giornata -->
           <tr>
             <td>1ª Ora</td>
             <td class="materia">--</td>
@@ -83,28 +85,24 @@
       </table>
     </section>
 
-     <section class="form-section">
-      <h2>Aggiungi Voto</h2>
-      <form id="form-voto">
-        <label for="materia-select">Materia:</label>
-        <select id="materia-select" required>
-          <option value="">Seleziona materia</option>
-          <option value="Informatica">Informatica</option>
-          <option value="Matematica">Matematica</option>
-          <option value="Italiano">Italiano</option>
-        </select>
+    <!-- SEZIONE 2: VOTI -->
+    <section id="sezione-voti" class="page-section hidden">
+      <div class="voti-container">
+        <h2>Registro Voti</h2>
+        <form id="form-voto">
+          <select id="materia-select" required>
+            <option value="">Seleziona materia</option>
+            <option value="Informatica">Informatica</option>
+            <option value="Matematica">Matematica</option>
+          </select>
+          <input type="number" id="voto-input" min="2" max="10" step="0.5" placeholder="Voto" required>
+          <button type="submit">Salva Voto</button>
+        </form>
 
-        <label for="voto-input">Voto:</label>
-        <input type="number" id="voto-input" min="2" max="10" step="0.5" placeholder="Es. 8" required>
-
-        <button type="submit">Salva Voto</button>
-      </form>
-    </section>
-
-    <section class="media-section">
-      <h2>Media Generale</h2>
-      <div class="media-box">
-        <span id="media-valore">--</span>
+        <div class="media-box">
+          <h3>Media Generale</h3>
+          <span id="media-valore">--</span>
+        </div>
       </div>
     </section>
 

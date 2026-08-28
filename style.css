@@ -1,5 +1,6 @@
-/* TEMPORANEO mentre decido se avere una o due pagine  */
-* {
+ /* Parte della scrittura del css è stata fatta con intelligenza artificiale*/
+ 
+ * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -22,7 +23,7 @@ header h1 {
   margin-bottom: 5px;
 }
 
-/*  principale */
+/* Layout Principale (Centrato) */
 .container {
   max-width: 900px;
   margin: 0 auto;
@@ -31,7 +32,7 @@ header h1 {
   gap: 30px;
 }
 
- 
+/* Sezione Orario e Tabella */
 .orario-section {
   background: white;
   padding: 20px;
@@ -66,7 +67,7 @@ header h1 {
   background-color: #f9f9f9;
 }
 
- 
+/* Sezione Voti e Form sotto l'orario */
 .form-section, .media-section {
   background: white;
   padding: 20px;
@@ -106,7 +107,7 @@ header h1 {
   background-color: #27ae60;
 }
 
- 
+/* Riquadro Media */
 .media-box {
   font-size: 2rem;
   font-weight: bold;
@@ -115,4 +116,51 @@ header h1 {
   padding: 10px;
   background-color: #ecf0f1;
   border-radius: 8px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto 20px auto;
+  padding: 0 10px;
+}
+
+ 
+.nav-icon {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  
+  
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+ 
+.nav-icon:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px) scale(1.05); /* Si solleva e s'ingrandisce leggermente */
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+
+.nav-icon:active {
+  transform: translateY(0) scale(0.98);
+}
+
+ 
+.page-section {
+  display: none;
+}
+
+.page-section.active {
+  display: block;
 }
