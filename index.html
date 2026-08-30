@@ -86,19 +86,45 @@
     </section>
 
     <!-- SEZIONE 2: VOTI -->
+    <!-- SEZIONE 2: VOTI -->
     <section id="sezione-voti" class="page-section hidden">
       <div class="voti-container">
         <h2>Registro Voti</h2>
+
+        <!-- Form per aggiungere i voti -->
         <form id="form-voto">
           <select id="materia-select" required>
             <option value="">Seleziona materia</option>
-            <option value="Informatica">Informatica</option>
             <option value="Matematica">Matematica</option>
+            <option value="Informatica">Informatica</option>
           </select>
           <input type="number" id="voto-input" min="2" max="10" step="0.5" placeholder="Voto" required>
           <button type="submit">Salva Voto</button>
         </form>
 
+        <!-- Nuova Tabella dei Voti per Materia -->
+        <div class="tabella-voti-container">
+          <table id="tabella-voti">
+            <thead>
+              <tr>
+                <th>Materia</th>
+                <th>Voti Inseriti</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="nome-materia">Matematica</td>
+                <td id="voti-matematica" class="elenco-voti">--</td>
+              </tr>
+              <tr>
+                <td class="nome-materia">Informatica</td>
+                <td id="voti-informatica" class="elenco-voti">--</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Riquadro Media Generale -->
         <div class="media-box">
           <h3>Media Generale</h3>
           <span id="media-valore">--</span>
@@ -111,3 +137,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
