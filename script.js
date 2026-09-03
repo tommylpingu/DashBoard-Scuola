@@ -72,12 +72,47 @@ if (formVoto) {
     const materia = document.getElementById('materia-select').value;
     const voto = document.getElementById('voto-input').value;
 
-    // Salva il voto nel cookie
+ 
     aggiungiVoto(materia, voto);
 
-    // Stampa in console per verificare i dati salvati
-    console.log("Voti attualmente nei cookie:", ottieniListaVoti());
+     aggiornaTabellaVoti();
 
     formVoto.reset();
   });
+}
+aggiornaTabellaVoti(); //aggiorna tabella alla fine
+
+
+function aggiornaTabellaVoti() {
+  const lista = ottieniListaVoti();
+
+  let votiMatematica = [];
+  let votiInformatica = [];
+
+
+  lista.forEach(item => {
+    if (item) {
+      const parti = item.split(':'); 
+      const materia = parti[0];
+      const voto = parti[1];
+
+      if (materia === "Matematica") {
+        votiMatematica.push(voto);
+      } else if (materia === "Informatica") {
+        votiInformatica.push(voto);
+      }
+    }
+  });
+
+  // Seleziono singole celle
+  const tdMatematica = document.getElementById('voti-matematica');
+  const tdInformatica = document.getElementById('voti-informatica');
+
+  // in caso non può mettere la virgola mette --
+  if (tdMatematica) {
+    tdMatematica.textContent = votiMatematica.length > 0 ? votiMatematica.join(', ') : '--';
+  }
+  if (tdInformatica) {
+    tdInformatica.textContent = votiInformatica.length > 0 ? votiInformatica.join(', ') : '--';
+  }
 }
