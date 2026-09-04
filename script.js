@@ -83,36 +83,61 @@ if (formVoto) {
 aggiornaTabellaVoti(); //aggiorna tabella alla fine
 
 
+// Funzione per rimuovere un singolo voto dato il suo indice nell'array
+function rimuoviVoto(indiceDaRimuovere) {
+  const lista = ottieniListaVoti(); // Recupera l'array di stringhe
+  
+  // Rimuove 1 elemento alla posizione indicata
+  lista.splice(indiceDaRimuovere, 1);
+  
+  // Sovrascrive il cookie con la nuova lista unita da virgole
+  const nuovaStringaCookie = lista.join(",");
+  setCookie("votiScolastici", nuovaStringaCookie, 30);
+  
+  // Ricarica la tabella aggiornata a schermo
+  aggiornaTabellaVoti();
+}
+
+// Funzione aggiornata per mostrare i voti con il tasto elimina
 function aggiornaTabellaVoti() {
   const lista = ottieniListaVoti();
 
-  let votiMatematica = [];
-  let votiInformatica = [];
+  // Contenitori HTML per i voti
+  const containerMatematica = document.getElementById('voti-matematica');
+  const containerInformatica = document.getElementById('voti-informatica');
 
+  if (containerMatematica) containerMatematica.innerHTML = '';
+  if (containerInformatica) containerInformatica.innerHTML = '';
 
-  lista.forEach(item => {
+  let haMatematica = false;
+  let haInformatica = false;
+
+  // Scorriamo i voti tenendo traccia dell'indice originale per la rimozione
+  lista.forEach((item, index) => {
     if (item) {
-      const parti = item.split(':'); 
+      const parti = item.split(':');
       const materia = parti[0];
       const voto = parti[1];
 
-      if (materia === "Matematica") {
-        votiMatematica.push(voto);
-      } else if (materia === "Informatica") {
-        votiInformatica.push(voto);
+      // Creiamo un badge grafico per il voto con il pulsante X
+      const badge = document.createElement('span');
+      badge.className = 'voto-badge';
+      badge.innerHTML = `
+        ${voto} 
+        <button class="btn-elimina-voto" onclick="rimuoviVoto(${index})" title="Elimina voto">&times;</button>
+      `;
+
+      if (materia === "Matematica" && containerMatematica) {
+        containerMatematica.appendChild(badge);
+        haMatematica = true;
+      } else if (materia === "Informatica" && containerInformatica) {
+        containerInformatica.appendChild(badge);
+        haInformatica = true;
       }
     }
   });
 
-  // Seleziono singole celle
-  const tdMatematica = document.getElementById('voti-matematica');
-  const tdInformatica = document.getElementById('voti-informatica');
-
-  // in caso non può mettere la virgola mette --
-  if (tdMatematica) {
-    tdMatematica.textContent = votiMatematica.length > 0 ? votiMatematica.join(', ') : '--';
-  }
-  if (tdInformatica) {
-    tdInformatica.textContent = votiInformatica.length > 0 ? votiInformatica.join(', ') : '--';
-  }
+  // Se una materia non ha voti, mostriamo "--"
+  if (containerMatematica && !haMatematica) containerMatematica.textContent = '--';
+  if (containerInformatica && !haInformatica) containerInformatica.textContent = '--';
 }
